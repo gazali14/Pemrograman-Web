@@ -1,0 +1,77 @@
+<html lang="en-GB">
+<head>
+    <title>JavaScript 09A: Inheritance</title>
+    <script id="j1">
+        function Rectangle(width, height) {
+            this.width = width;
+            this.height = height;
+            this.type = 'Rectangle';
+        }
+        Rectangle.prototype.area = function () { return this.width * this.height; };
+         //(2) Modifikasi untuk merepresentasikan Rectangle dengan width dan height
+         Rectangle.prototype.toString = function() {
+            return 'Rectangle[' + this.width + ', ' + this.height + ']';
+        }
+        /*(3) Dengan menambahkan method toString() baru, maka akan merubah tampilan saat mencetak
+        rc1 dan sq1 menjadi rectangle[wd,ht]. Hal ini karena method toString tersebut telah
+        meng-Override method toString bawaan dari javascript. */
+
+
+        function Square(length) {
+            this.width = this.height = length;
+            this.type = 'Square';
+        }
+        // Square inherits from Rectangle
+        Square.prototype = new Rectangle();
+        //(3) Modifikasi untuk merepresentasikan Square dengan length
+        Square.prototype.toString = function() {
+            return 'Square[' + this.width + ']';
+        };
+        /*(5) Kemudian agar square ditampilkan square[lenght], makapperlu juga untuk memodifikasi
+        method toString() untuk objek square seperti diatas.*/
+
+        /*(6) untuk membuat representasi objek polygon yang menerima dua parameter yaitu jumlah sisi(n)
+        dan panjang tiap sisi [s]. Berikut caranya :*/
+        //(7) Constructor Polygon
+        function Polygon(numSides, sideLength) {
+            this.numSides = numSides;
+            this.sideLength = sideLength;
+            this.type = numSides + "-Polygon";
+        }
+
+        //(8) Method untuk menghitung  area polygon
+        Polygon.prototype.area = function () {
+            // Rumus untuk menghitung area polygon
+            // Area = (n * s^2) / (4 * tan(π/n))
+            var area = (this.numSides * Math.pow(this.sideLength, 2)) / (4 * Math.tan(Math.PI / this.numSides));
+            // Membulatkan area menjadi dua angka dibelakang koma
+            return Math.round(area * 100) / 100;
+        };
+
+        // (9) Method toString untuk menampilkan objek polygon
+        Polygon.prototype.toString = function () {
+            return this.type + "[" + this.sideLength + "]";
+        };
+    </script>
+</head>
+<body>
+    <script id="j2">
+        var rc1 = new Rectangle(2, 3);
+        var sq1 = new Square(5);
+        var plyg1 = new Polygon(5,6) //
+        document.writeln("The area of rc1 is ", rc1.area(), "<br>");// The area of sq1 is 6
+        document.writeln("The area of sq1 is ", sq1.area(), " <br>"); //The area of sq1 is 25
+        document.writeln("The area of ", rc1, " is ", rc1.area(), "<br>"); //The area of [object Object] is 6
+        document.writeln("The area of ", sq1, " is ", sq1.area(), "<br>"); //The area of [object Object] is 25
+        document.writeln("The area of ", plyg1, " is ", plyg1.area(), "<br>"); //The area of [object Object] is 25
+        /*(1) JavaScript akan menggunakan
+        method toString dari objek tersebut untuk mendapatkan representasi string
+        dari objek tersebut. Jika method toString diwariskan dari Object tanpa diubah,
+        maka representasi string adalah “[object type]”, di mana type adalah tipe dari
+        objek tersebut. 
+        
+        Ubah representasi dari objek Rectangle dengan menampilkan lebar/width wd
+        dan tinggi/height ht menjadi “Rectangle[wd, ht]”.*/
+    </script>
+</body>
+</html>

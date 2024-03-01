@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="invoice.css">
+  <title>Invoice - Concert Ticket Booking</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Invoice - Concert Ticket Booking</h1>
+    <div class="invoice">
+      <div class="details">
+        <!-- Detail Pemesanan -->
+        <p><strong>Nama</strong> <span id="invoice-name"></span></p>
+        <p><strong>E-mail</strong> <span id="invoice-email"></span></p>
+        <p><strong>Nomor Telepon</strong> <span id="invoice-phone"></span></p>
+        <p><strong>Konser</strong> <span id="invoice-selectconcert"></span></p>
+        <p><strong>Jenis Tiket</strong> <span id="invoice-jenistiket"></span></p>
+        <p><strong>Jumlah</strong> <span id="invoice-quantity"></span></p>
+      </div>
+      <div class="total">
+        <p id="invoice-total"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Ambil nilai dari sessionStorage pada javscript
+    const name = sessionStorage.getItem('name');
+    const email = sessionStorage.getItem('email');
+    const phone = sessionStorage.getItem('phone');
+    const selectconcert = sessionStorage.getItem('selectconcert');
+    const jenistiket = sessionStorage.getItem('jenistiket');
+    const quantity = sessionStorage.getItem('quantity');
+
+    // Tampilkan nilai pada invoice
+    document.getElementById('invoice-name').innerText = name;
+    document.getElementById('invoice-email').innerText = email;
+    document.getElementById('invoice-phone').innerText = phone;
+    document.getElementById('invoice-selectconcert').innerText = selectconcert;
+    document.getElementById('invoice-jenistiket').innerText = jenistiket;
+    document.getElementById('invoice-quantity').innerText = quantity;
+    document.getElementById('invoice-total').innerText = `Total: ${getTotalPrice(jenistiket, quantity)}`;
+
+    // Fungsi untuk mendapatkan total harga berdasarkan jenis tiket dan jumlah tiket
+    function getTotalPrice(jenistiket, quantity) {
+      let ticketPrice;
+      switch (jenistiket) {
+          case 'Festival':
+              ticketPrice = 700000;
+              break;
+          case 'VIP':
+              ticketPrice = 1000000;
+              break;
+          case 'VVIP':
+              ticketPrice = 1200000;
+              break;
+          default:
+              ticketPrice = 0;
+      }
+      
+      const total = ticketPrice * quantity;
+      // Format agar terdapat titik pemisah angka ribuan/jutaan
+      const formattedTotal = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(total);
+      
+      return formattedTotal;
+    }
+  </script>
+</body>
+</html>

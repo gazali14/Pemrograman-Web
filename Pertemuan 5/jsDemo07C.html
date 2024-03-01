@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+    </style>
+    <title>JavaScript 07C</title>
+</head>
+<body>
+    <!-- Materi tipe data, persamaan dan perbandingan dalam javascript -->
+
+    <script>
+        Array.prototype.toString = function () {
+            var arrStr = "[";
+            for (var i = 0; i < this.length; i++) {
+                arrStr += this[i];
+                if (i < this.length - 1) arrStr += ", "
+            }
+            return (arrStr += "]");
+        }
+        var values = [0, 123, 1.23e2, "12.3e1", true, false,NaN,Infinity, undefined, null, [0]];
+        for (var i = 0; i < values.length; i++) {
+            document.writeln(i + ") The type of " + values[i] + " is: " + typeof (values[i]) + "<br>");
+        }
+        document.writeln(i + ") The type of " + values + " is: " + typeof (values) + "<br>");
+        /*(1) Program diatas dapat mengidentifikasi berbagai tipe data dari
+        setiap elemen yang ada dalam array values[]. Kemudiam kode diatas dapat
+        dikembangkan dengan menambahkan kode berikut, sehingga tampil gabungan seluruh
+        array dengan tipe yang berbeda-beda pada tiap elemennya*/
+        document.writeln("Elements of values are: " + values.join()+"<br>")
+
+
+        /* (2) Selanjutnya program diatas akan dikembangkan lagi dengan dengan menambahkan 
+        kode program yang membandingkan tiap elemen dengan tiap elemen yang lain menggunakan
+        empat operator, yaitu ==, ===, > dan <.  Seperti berikut ini*/
+        /*
+        function compareElements(a, b) {
+            document.writeln("(" + typeof a + ")" + a + " == (" + typeof b + ")" + b + ": " + (a == b) + "<br>");
+            document.writeln("(" + typeof a + ")" + a + " === (" + typeof b + ")" + b + ": " + (a === b) + "<br>");
+            document.writeln("(" + typeof a + ")" + a + " < (" + typeof b + ")" + b + ": " + (a < b) + "<br>");
+            document.writeln("(" + typeof a + ")" + a + " > (" + typeof b + ")" + b + ": " + (a > b) + "<br>");
+        }
+
+        //(3) Loop untuk membandingkan tiap elemen dalam array
+        for (var i = 0; i < values.length; i++) {
+            for (var j = 0; j < values.length; j++) {
+                compareElements(values[i], values[j]);
+            }
+        }*/
+
+        /*(4) Lalu, kode tersebut diminta untuk dibuat dalam bentuk tabel dengan HTML agar terlihat rapih */
+
+    </script>
+    <!-- Berikut tabel untuk menampilkan perbandingan elemen array diatas-->
+    <table>
+        <thead>
+            <tr style="text-align: center;">
+                <th>==</th>
+                <th>===</th>
+                <th>&lt;</th>
+                <th>&gt;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+                Array.prototype.toString = function () {
+                    var arrStr = "[";
+                    for (var i = 0; i < this.length; i++) {
+                        arrStr += this[i];
+                        if (i < this.length - 1) arrStr += ", "
+                    }
+                    return (arrStr += "]");
+                }
+                var values = [0, 123, 1.23e2, "12.3e1", true, false, NaN, Infinity, undefined, null, [0]];
+
+                // Function membandingkan elemen dalam array dan membuatnya dalam bentuk tabel
+                function compareElements(a, b) {
+                    document.writeln("<tr>");
+                    document.writeln("<td>(" + typeof a + ")" + a + " == (" + typeof b + ")" + b + " :"+ (a == b)+"</td>");
+                    document.writeln("<td>(" + typeof a + ")" + a + " === (" + typeof b + ")" + b + " : "+ (a === b)+"</td>");
+                    document.writeln("<td>(" + typeof a + ")" + a + " < (" + typeof b + ")" + b + " : "+ (a < b)+"</td>");
+                    document.writeln("<td>(" + typeof a + ")" + a + " > (" + typeof b + ")" + b + " : "+ (a > b)+"</td>");
+                    document.writeln("</tr>");
+                }
+
+                // Loop untuk membandingkan setiap  elemen dalam array dengan elemen lainnya
+                for (var i = 0; i < values.length; i++) {
+                    for (var j = 0; j < values.length; j++) {
+                        compareElements(values[i], values[j]);
+                    }
+                }
+            </script>
+        </tbody>
+    </table>
+
+    <noscript>
+        JavaScript not supported or disabled
+    </noscript>
+</body>
+</html>

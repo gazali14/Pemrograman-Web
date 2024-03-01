@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <title>Hello World</title>
+</head>
+<body>
+    <!-- Materi Deklarasi variabel javascript -->
+
+    <!-- ====================== CAUTION ====================== -->
+    <!-- Silahkan baca penjelasan dari script dengan id=s2, dan lihat urutan angka dalam tanda kurung () -->
+    <script id="s1"> // Script with id s1
+        var userAge = "21";
+        /*(6) Saat deklarasi userAge dilakukan disini, maka tidak muncul error pada console.
+        Hal ini terdjadi karena penggunaany variabel userAge dilakukan setelah pendeklarasian
+        variabelnya
+        
+        (7) Bagian selanjutnya, silahkan scroll down dan lihat ke elemen noscript dibawah*/
+        
+    </script>
+    
+    <p>Our first JavaScript script</p>
+    <script id="s2"> // Script with id s2
+        //PENJELASAN DIMULAI DARI SINI
+        user = "La Ode Muhammad Gazali";
+        document.writeln("<p><b>Hello " + user + "<br>\nHello World!</b></p>");
+        document.writeln("(1) The value of userAge is: " +userAge + "<br>");
+        document.writeln("(2) This statement is executed<br>");
+        /*(1) Kode javascript tersebut menampilkan informasi yang sesuai, namun
+        saat diperiksa di console, terdapat error karena variabel user age belum 
+        dideklarasikan, sehingga perlu diinisialisasi variabel useAge, seperti berikut */
+
+        //var userAge = "21";
+        document.writeln("(3) The value of userAge is: " +userAge + "<br>");
+        
+        /*(2) Setelah variabel userAge diinisilasisasi maka error telah teratasi.
+        Dalam konteks ini,deklarasi variabel tidak harus mendahului penggunaannya untuk menghindari 
+        error, walaupun bagian tidak termasuk inisialisasinya yang akan dieksekusi kemudian.*/
+
+        /*(3)Selanjutnya, misal deklarasinya dipindahkan ke script id=s3 seperti berikut*/
+    </script>
+    
+    <script id="s3"> // Script with id s3
+        //var userAge = "21";
+
+        /*(4) Saat variabel userAge dipindahkan ke sini, maka pada console muncul error seperti diawal
+        Hal ini berarti deklarasi variabel yang mendahului penggunaannya harus berada pada script yang sama.
+        
+        (5)Kemudian misal kita pindahkan lagi deklarasi variabelnya ke script id=s1 seperti diatas*/
+    </script>
+    
+    <p>This is the rest of the page</p>
+    <!--(8) Misal ingin dilihat cakupan deklarasi variabel dalam blok if else  -->
+    <!-- Exercise 1j -->
+    <script id="s4">
+        if (false) {
+            //var x = 519; //(9)mendeklarasikan variabel x di blok if
+            var y = 519; //(12) mengubah deklarasi variabel dari x menjadi y
+            /*(13) saat var x diubah menjadi y, maka pada consol muncul pesan error bahwa x yang dipanggil pada blok else
+            is not defined, Hal ini terjadi karena terdapat proses pengubahan variabel x menjadi y, sehingga
+            x tidak dapat dikenali.*/
+        } else {
+            document.writeln("The value of x is " + x + "<br>"); // memanggil variabel x di blok else
+        }
+        /*(10) Proses pendeifinisian variabel tersebut tidak menghasilkan error pada console, namun
+        hal tersebut menyebabkan nilai yang muncul pada browser mejadi undefined. Hal ini karena
+        inisialisasi value variabel x pada blok if tidak dapat dikenali pada blok else */
+
+        /*(11) kemudian misal deklarasi variabel pada blok if diubah menjadi var y =519 seperti diatas*/
+    </script>
+    <noscript>JavaScript not supported or disabled</noscript>
+</body>
+</html>

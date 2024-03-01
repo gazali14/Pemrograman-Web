@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // (1) script awal
+        planets = ["earth"];
+        planets.unshift("mercury", "venus");
+        planets.push("mars", "jupiter", "saturn");
+        document.writeln("planets\@1: " + planets.join(" ") + "<br>");
+        last = planets.pop();
+        document.writeln("planets\@2: " + planets.join(" ") + "<br>");
+        first = planets.shift();
+        document.writeln("planets\@3: " + planets.join(" ") + "<br>");
+        document.writeln(" \@4: " + first + " " + last + "<br>");
+        home = ["mercury", "venus", "earth"].pop();
+        document.writeln(" \@5: " + home + "<br>");
+        number = ["earth"].push("mars");
+        document.writeln(" \@6: " + number + "<br>");
+        
+        //(2) Mengembangkan script
+        planets.length = 2;
+        document.writeln("planets\@7: " + planets.join(" ") + "<br>");
+        //list = planets; // (6) Modify this line in Exercise 2g
+        list = planets.slice();
+        /* Dengan menambahkan .slice() akan menciptakan salinan yang independen 
+        dari planets. Sehingga perubahan pada planets tidak akan memengaruhi list.*/
+
+        document.writeln("list \@8: " + list.join(" ") + "<br>");
+        planets[1] = "midgard";
+        document.writeln("list \@9: " + list.join(" ") + "<br>");  
+        /*(3)  list @9 akan menghasilkan output venus migdard. Hal ini terjadi karena
+        planets[1] yang awalnya earth telah diubah menjadi migdard */
+
+        //(4) Mengembangkan script lagi
+        planets = ["Bellerophon", "Ymir", "Osiris"];
+        document.writeln("list \@10: " + list.join(" ") + "<br>");
+        document.writeln("planets\@10: " + planets.join(" ") + "<br>");
+        /*(5) Perubahan pada variabel planets tersebut dapat mempemgaruhi variabel list juga
+        yang akan ikut berubah. Maka perlu dilakukan modifikasi pada deklarasi variabel list diatas pada
+        komentar (6) diatas */
+    </script>
+</body>
+</html>

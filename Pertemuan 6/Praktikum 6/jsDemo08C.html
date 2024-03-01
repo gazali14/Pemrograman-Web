@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <title>JavaScript 08C</title>
+    <style>
+        table {
+        border: 1px;
+        padding: 5px;
+        }
+    </style>
+    <script>
+        function bubble_sort(array) {
+            function swap(array, i, j) {
+                // swap can change array because array is
+                // a local variable of the outer function bubble_sort
+                var tmp = array[i];
+                array[i] = array[j];
+                array[j] = tmp;
+            }
+            if (!(array && array.constructor == Array))
+                throw ("Argument not an array");
+            for (var i = 0; i < array.length; i++)
+                for (var j = 0; j < array.length - i; j++)
+                    if (array[j + 1] < array[j]) swap(array, j, j + 1)
+            return array;
+        }
+        /*(3) menambahkan funcion buble_sort2. Metode ini digunakan pada suatu
+         array dengan cara memanggilnya langsung dari array tersebut, misalnya array.bubble_sort2() */
+        function bubble_sort2() {
+            function swap(array, i, j) {
+                // swap can change array because array is
+                // a local variable of the outer function bubble_sort
+                var tmp = array[i];
+                array[i] = array[j];
+                array[j] = tmp;
+            }
+            if (!(this && this.constructor == Array))
+                throw ("Argument not an array");
+            for (var i = 0; i < this.length; i++)
+                for (var j = 0; j < this.length - i; j++)
+                    if (this[j + 1] < this[j]) swap(this, j, j + 1)
+            return this;
+        }
+        
+        //(9) function sum
+        Array.prototype.sum = function() {
+            // Inisialisasi variabel untuk menyimpan total
+            var total = 0;
+
+            // Iterasi melalui setiap elemen dalam array
+            for (var i = 0; i < this.length; i++) {
+                // Periksa apakah elemen adalah angka dan tambahkan ke total
+                if (!isNaN(parseFloat(this[i]))) {
+                    total += parseFloat(this[i]);
+                }
+            }
+
+            // Kembalikan total, jika tidak ada elemen kembalikan 0
+            return total;
+        };
+
+        //(10) Function peek
+        Array.prototype.peek = function() {
+            // Periksa apakah array memiliki elemen
+            if (this.length === 0) {
+                // Jika tidak ada elemen, kembalikan undefined
+                return undefined;
+            } else {
+                // Jika ada elemen, kembalikan elemen pertama tanpa mengubah array
+                return this[0];
+            }
+        };
+
+    </script>
+</head>
+<body>
+    <h1>Sorting Arrays</h1>
+    <script>
+        numbers = [20, 4, 3, 9, 6, 8, 5, 10];
+        document.writeln("<h2>bubble_sort function</h2>");
+        document.writeln("<table>\n<tbody>");
+        document.writeln("<tr><td>array before sorting" + "</td><td>" + numbers.join(", ") + "</td></tr>");
+        
+        // Sort a copy of array
+        /*(1) .slice() akan membuat salinan dari array sehingga operasi pengurutan tidak akan mempengaruhi array asli.*/
+        sorted = bubble_sort(numbers.slice());
+        document.writeln("<tr><td>array after sorting of copy" + "</td><td>" + numbers.join(", ") + "</td></tr>");
+        /*(2)  array numbers secara langsung akan mempengaruhi array asli, sehingga yang diurutkan adalah array asli, bukan salinannya*/
+        sorted = bubble_sort(numbers);
+        document.writeln("<tr><td>array after sorting of itself" + "</td><td>" + numbers.join(", ") + "<\/td></tr>");
+        document.writeln("<tr><td>sorted array</td><td>" +
+        sorted.join(", ") + "</td></tr>");
+        document.writeln("</tbody>\n</table>");
+        
+
+        //(4) implementasi buble_sort2
+        Array.prototype.bubble_sort = bubble_sort2;
+        numbers = [20, 4, 3, 9, 6, 8, 5, 10];
+        document.writeln("<h2>bubble sort array prototype method</h2>");
+        document.writeln("<table>\n<tbody>");
+        document.writeln("<tr><td>array before sorting" + "</td><td>" + numbers.join(", ") + "</td></tr>");
+        //(5) Sehingga saat pernyataan dibawah ini memanggil prototype buble_sort, maka nilai dalam array dapat terurut 
+        sorted = numbers.slice().bubble_sort();
+        document.writeln("<tr><td>array after sorting of copy" + "</td><td>" + numbers.join(", ") + "</td></tr>");
+        sorted = numbers.bubble_sort();
+        document.writeln("<tr><td>array after sorting of itself" + "</td><td>" + numbers.join(", ") + "</td></tr>");
+        document.writeln("<tr><td>sorted array</td><td>" + sorted.join(", ") + "</td></tr>");
+        document.writeln("</tbody>\n</table>");
+
+        /*(6) menambahkan baris program untuk pre-defined sort bawaan dari javascript.
+        Namun, hasilnya tidak terurut secara numerik. Untuk memperbaiki masalah tersebut maka pada deklarasi array
+        dan pembuatan objek sorted perlu ditambahkan deklarasi dengan var dan membuat fungsi untuk melakukan return a-b.
+        secara sederhana, return a - b membantu menentukan apakah a harus ditempatkan sebelum atau setelah b dalam urutan
+         yang diinginkan, berdasarkan perbandingan nilai numerik mereka*/
+        //numbers = [20, 4, 3, 9, 6, 8, 5, 10]; // before
+        var numbers = [20, 4, 3, 9, 6, 8, 5, 10]; // after
+        document.writeln("<h2>pre-defined array sort method</h2>");
+        document.writeln("<table>\n<tbody>");
+        document.writeln("<tr><td>array before sorting" + "</td><td>" + numbers.join(", ") + "</td></tr>");
+        // Sort a copy of array
+        //sorted = numbers.slice().sort(); // before
+        var sorted = numbers.slice().sort(function(a,b){
+            return a -b ;
+        }); // after
+        document.writeln("<tr><td>array after sorting of copy" + "</td><td>" + numbers.join(", ") + "</td></tr>");
+        //sorted = numbers.sort(); //before
+        sorted = numbers.sort(function(a,b){
+            return a - b;
+        });// after
+        document.writeln("<tr><td>array after sorting of itself" + "</td><td>" + numbers.join(", ") + "</td></tr>");
+        document.writeln("<tr><td>sorted array</td><td>" +sorted.join(", ") + "</td></tr>");
+        document.writeln("</tbody>\n</table>");
+
+        /*(7) Mengembangkan objek array dengan menambahkan implementasi method sum*/
+        document.writeln("<h2>array prototype sum function</h2>");
+        // For array0 the expected result is 0
+        array0 = [];
+        document.writeln("<div>[" + array0 + "].sum() = " + array0.sum() + "</div>");
+        // For array1 the expected result is 6
+        array1 = [3, 2, 1];
+        document.writeln("<div>[" + array1 + "].sum() = " + array1.sum() + "</div>");
+        // For array2 the expected result is 6
+        array2 = [3, "2M", [1, 0]];
+        document.writeln("<div>[" + array2 + "].sum() = " + array2.sum() + "</div>");
+        
+
+        //(11) Contoh penggunaan metode peek()
+        document.writeln("<h2>Array Prototype Peek Function</h2>");
+
+        // Contoh array
+        var array1 = [3, 2, 1]; // akan mengembalikan elemen pertama (peek)
+        var array2 = []; //akan mengembalikan undefined
+
+        // Tampilkan hasil untuk setiap array
+        document.writeln("<div>[" + array1 + "].peek() = " + array1.peek() + "</div>");
+        document.writeln("<div>[" + array2 + "].peek() = " + array2.peek() + "</div>");
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+/* styles.css */
+/* Style untuk seluruh body */
+body {
+  font-family: Arial, sans-serif; /* Mengatur jenis font untuk teks pada body */
+  margin: 0; /* Mengatur margin menjadi 0 */
+  padding: 0; /* Mengatur padding menjadi 0 */
+  background-image: url('img/pict2.jpg'); /* Menentukan gambar latar belakang */
+  background-size: cover; /* Mengatur ukuran latar belakang agar menutupi seluruh area */
+  background-repeat: no-repeat; /* Menghindari pengulangan gambar latar belakang */
+}
+
+/* Style untuk container */
+.container {
+  max-width: 600px; /* Menentukan lebar maksimum container */
+  margin: 50px auto; /* Mengatur margin secara otomatis */
+  padding: 20px; /* Memberikan padding */
+  background :transparent; /* Mengatur background menjadi transparan */
+  border-radius: 10px; /* Memberikan sudut lengkung pada border */
+  outline: none; /* Menghapus outline */
+  border: 2px solid #fff; /* Mengatur border */
+  backdrop-filter: blur(10px); /* Memberikan efek blur pada latar belakang */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada container */
+}
+
+/* Style untuk elemen h1 pada container */
+.container h1 {
+  color: #fff; /* Mengatur warna teks */
+  text-align: center; /* Mengatur rata tengah */
+}
+
+/* Style untuk elemen-elemen invoice */
+#invoice-name,
+#invoice-email,
+#invoice-phone,
+#invoice-selectconcert,
+#invoice-jenistiket,
+#invoice-quantity,
+#invoice-total {
+  color: #fff; /* Mengatur warna teks */
+}
+
+/* Style untuk invoice */
+.invoice {
+  display: flex; /* Mengatur tata letak menjadi flexbox */
+  justify-content: space-between; /* Mengatur penempatan elemen secara merata */
+  align-items: center; /* Mengatur penempatan elemen secara vertikal ke tengah */
+  margin-top: 20px; /* Memberikan jarak atas */
+}
+
+/* Style untuk detail-detail pada invoice */
+.details p {
+  margin: 5px 0; /* Memberikan margin */
+  color: #fff; /* Mengatur warna teks */
+}
+
+/* Style untuk tag p strong pada details */
+.details p strong {
+  min-width: 150px; /* Menentukan lebar minimum */
+  display: inline-block; /* Mengatur agar elemen menempati space */
+}
+
+/* Style untuk total harga */
+.total {
+  margin-top: 170px; /* Memberikan jarak atas */
+  flex-basis: 200px; /* Menentukan basis fleksibel */
+  text-align: right; /* Mengatur rata kanan */
+}

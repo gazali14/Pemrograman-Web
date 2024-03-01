@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+h1 {
+    font-size: 2.0em;
+    color: Navy;
+    margin-top: 1em;
+}
+h2 {
+    font-size: 1.8em;
+    color: Navy;
+}
+nav li {
+    display:inline;
+    padding: 5px 1em 5px 1em;
+    background-color: #aab;   
+}
+nav li a {
+    padding: 5px;
+    background-color:#CCD;
+}
+nav li a:hover{
+    background-color: yellow;
+}
+
+#P1, #P2, #P3
+{
+    background-color: lightyellow;
+    padding : 0.5em 0.5em 0.5em 0.5em;
+    margin : 0.5em 0 0.5em 0;
+    border-radius: 1.0em;
+}
+
+nav ol,
+ul {
+    padding-left: 0em;
+    margin-top: 0em;
+    list-style-position: inside;
+}
+
+.x::before{
+    counter-increment: p3;
+    content: counters(p3,'.')'.';
+}
+
+.x .y::before{
+    counter-increment: p3;
+    content: counters(p3,'.')'.';
+    padding-right: 15px;
+}
+
+nav ol {
+    counter-reset: item;
+}
+
+ol{
+    counter-reset: p3;
+    list-style-type: none;
+    padding-left: 0em;
+}
+
+div ol li {
+    display: block;
+}
+
+div ol li:before {
+    content: counters(item, ".") ". ";
+    counter-increment: item;
+    padding-right: 15px; 
+}
+
+dt {
+    background-color: navy;
+    color: white;
+    border-radius: 1em 1em 0 0;
+    padding-left: 1em;
+}
+dd {
+    background-color: #ccd;
+    border-radius: 0 0 1em 1em;
+    margin-left: 0;
+    padding-left: 1em;
+    margin-bottom: 0.5em;
+}
+p {
+    margin-bottom: 0em;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <title>JavaScript 07B</title>
+</head>
+<body>
+    <!-- Materi error detection dengan console pada javascript -->
+    <script>
+    for (i = 1; i < 6; i++) {
+        mode = Math.floor((Math.random() * 4) + 1);
+        /*(1) Karena angka di generate secara acak maka hasilnya dapat
+        berbeda-beda. Jika tidak yakin cabang ana dalam pernyataan switch
+        yang dieksekusi, maka kita bisa menampilkan pesan keterangan dalam
+        debgug consol dengan menambahkan kode dibawah ini*/
+
+        /*(2) Add debugging code here */
+        //console.log("i = ", i, ", mode = ", mode);
+
+        /* atau bisa dengan menggunakan fitur debugger seperti berikut*/
+        debugger;
+        switch (mode) {
+            case 1: randvar = Math.round(Math.random() * 100);
+            break;
+            case 2: randvar = String(Math.random());
+            break;
+            case 3: randvar = Math.random() / (Math.random() + 1);
+            break;
+            default: randvar = Boolean(Math.random() + 0.5);
+            break;
+        }
+        document.writeln("Random value: (" + typeof (randvar) + ")" + randvar + "<br />\n");
+
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+/* Style untuk seluruh body */
+body {
+  font-family: 'Arial', sans-serif; /* Mengatur jenis font untuk teks pada body */
+  background: url('img/pict2.jpg') center; /* Mengatur gambar latar belakang dan penempatannya */
+  background-size: cover; /* Mengatur ukuran latar belakang agar menutupi seluruh area */
+  margin: 0; /* Menghapus margin default */
+  display: flex; /* Mengatur tata letak menjadi flexbox */
+  align-items: center; /* Mengatur penempatan konten secara vertikal ke tengah */
+  justify-content: center; /* Mengatur penempatan konten secara horizontal ke tengah */
+  height: 100vh; /* Mengatur tinggi body agar mengisi seluruh viewport */
+}
+
+/* Style untuk container */
+.container {
+  padding: 20px; /* Memberikan padding */
+  border-radius: 8px; /* Memberikan sudut lengkung pada border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada container */
+  background: transparent; /* Mengatur background container menjadi transparan */
+  outline: none; /* Menghapus outline */
+  border: 2px solid #fff; /* Mengatur border */
+  backdrop-filter: blur(20px); /* Memberikan efek blur pada latar belakang container */
+}
+
+/* Style untuk judul h1 */
+.container h1 {
+  color: #fff; /* Mengatur warna teks */
+}
+
+/* Style untuk form */
+.form {
+  display: flex; /* Mengatur tata letak menjadi flexbox */
+  flex-direction: column; /* Mengatur tata letak menjadi kolom */
+}
+
+/* Style untuk label */
+label {
+  margin-bottom: 8px; /* Memberikan jarak bawah */
+  font-weight: bold; /* Mengatur tebal huruf */
+  color: #fff; /* Mengatur warna teks */
+}
+
+/* Style untuk input dan select */
+input, select {
+  margin-bottom: 16px; /* Memberikan jarak bawah */
+  padding: 10px; /* Memberikan padding */
+  border-radius: 4px; /* Memberikan sudut lengkung pada border */
+  background: transparent; /* Mengatur background menjadi transparan */
+  border: 1px solid #fff; /* Mengatur border */
+  color: #fff; /* Mengatur warna teks */
+}
+
+/* Style untuk placeholder */
+::placeholder {
+  color: #fff; /* Mengatur warna placeholder */
+}
+
+/* Style untuk select */
+select {
+  appearance: none; /* Menghapus default styling dari browser */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 12"><path d="M4 8L0 4h8l-4 4z"/></svg>'); /* Menambahkan ikon panah dropdown */
+  background-repeat: no-repeat; /* Mengatur agar ikon tidak diulang */
+  background-position-x: calc(100% - 15px); /* Menentukan posisi ikon */
+  background-position-y: center; /* Menentukan posisi ikon */
+}
+
+/* Style untuk option dalam select */
+select option {
+  background-color: black; /* Mengatur warna latar belakang opsi */
+  color: white; /* Mengatur warna teks opsi */
+  border: none; /* Menghapus border pada opsi */
+  padding: 5px; /* Memberikan padding */
+}
+
+/* Style untuk tombol */
+button {
+  margin-top: 16px; /* Memberikan jarak atas */
+  padding: 12px 20px; /* Memberikan padding */
+  background-color: #fff; /* Mengatur warna latar belakang tombol */
+  color: #333; /* Mengatur warna teks */
+  border: none; /* Menghapus border */
+  border-radius: 4px; /* Memberikan sudut lengkung pada border */
+  cursor: pointer; /* Mengubah kursor menjadi tanda tangan */
+  transition: background-color 0.3s; /* Mengatur transisi warna latar belakang */
+}
+
+/* Style untuk tombol saat dihover */
+button:hover {
+  background-color: #0056b3; /* Mengatur warna latar belakang saat dihover */
+}
+
+/* Style untuk total */
+#total {
+  margin-top: 20px; /* Memberikan jarak atas */
+  font-size: 18px; /* Mengatur ukuran teks */
+  font-weight: bold; /* Mengatur tebal huruf */
+  color: #333; /* Mengatur warna teks */
+}

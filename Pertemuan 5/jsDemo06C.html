@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <title>Math Example 2</title>
+</head>
+<body>
+    <!-- Materi presisi bilangan pecahan pada javascript -->
+
+    <script>
+        var x = 0.3 - 0.2;
+        var y = 0.2 - 0.1;
+        document.writeln("x = " + x + "<br>") // x = 0.0999999
+        document.writeln("y = " + y + "<br>") // y = 0.1
+        document.writeln("(x == y) = " + (x == y) + "<br>") //false
+        document.writeln("(x == 0.1) = " + (x == 0.1) + "<br>")  //false
+        document.writeln("(y == 0.1) = " + (y == 0.1) + "<br>")  //true
+
+        /* Secara logika, hasil dari x dan y harusnya sama yaitu 0,1. Namun,
+        dalam javascript presisi dari bilangan pecahan 64-bit sangat terbatas. 
+        Hal ini dikarenakan representasi bilangan biner untuk bilangan 
+        pecahan memungkinkan terjadinya pecahan-pecahan biner atau yang sering 
+        dikenal dengan floating point errors. Oleh karena itu, pada kasus ini, walaupun 
+        secara matematis seharusnya benar, dalam representasi floating point, hasilnya bisa 
+        berbeda-beda*/
+    </script>
+</body>
+</html>

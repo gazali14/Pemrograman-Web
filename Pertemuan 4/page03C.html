@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dokumen HTML Tabel Style</title>
+        <style>
+            div{
+                margin-left: 5%;
+                width: max-content;
+            }
+            th{
+                background-color: lightblue;
+                text-align: center;
+            }
+            tr:nth-child(even){
+                background-color: #F2F2F2;
+            }
+            table, th, td{
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 0em 0.5em 0em 0.5em;
+            }
+            td{
+                text-align: right;
+            }
+            th.city{
+                text-align: left;
+            }
+            dt{
+                background-color: lightblue;
+                float: left;
+                clear: left;
+                font-weight: bold;
+                text-align: center;
+                padding: 0em 0.5em 0em 0.5em;
+            }
+            dt::after{
+                content: ":";
+            }
+            dd{
+                background-color: lightyellow;
+                padding-left: 2.0em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Education and Skills</h1>
+        <div style="margin-left: 5%;">
+            <p>NVQ Qualifications in UK Core Cities</p>
+        <table>
+            <tr>
+                <th rowspan="2">City</th>
+                <th colspan="2">NVQ4</th>
+                <th colspan="2">NVQ3</th>
+                <th colspan="2">NVQ2</th>
+            </tr>
+            <tr>
+                <th>Count</th>
+                <th>%Rate</th>
+                <th>Count</th>
+                <th>%Rate</th>
+                <th>Count</th>
+                <th>%Rate</th>
+            </tr>
+            <tr>
+                <th>Birmingham</th>
+                <td>241,900</td>
+                <td>33.2</td>
+                <td>379,900</td>
+                <td>52.2</td>
+                <td>497,100</td>
+                <td>68.3</td>
+            </tr>
+            <tr>
+                <th>Bristol</th>
+                <td>155,900</td>
+                <td>49.3</td>
+                <td>216,300</td>
+                <td>68.5</td>
+                <td>256,300</td>
+                <td>81.1</td>
+            </tr>
+            <tr>
+                <th>Cardiff</th>
+                <td>114,600</td>
+                <td>46.8</td>
+                <td>160,400</td>
+                <td>65.5</td>
+                <td>196,400</td>
+                <td>80.2</td>
+            </tr>
+            <tr>
+                <th>Glasgow</th>
+                <td>197,100</td>
+                <td>45.9</td>
+                <td>249,600</td>
+                <td>58.1</td>
+                <td>297,000</td>
+                <td>69.1</td>
+            </tr>
+            <tr>
+                <th>Leeds</th>
+                <td>197,600</td>
+                <td>38.2</td>
+                <td>301,100</td>
+                <td>58.3</td>
+                <td>392,800</td>
+                <td>76.0</td>
+            </tr>
+            <tr>
+                <th>Liverpool</th>
+                <td>124,800</td>
+                <td>37.5</td>
+                <td>186,700</td>
+                <td>56.1</td>
+                <td>247,300</td>
+                <td>74.3</td>
+            </tr>
+            <tr>
+                <th>Manchester</th>
+                <td>169,800</td>
+                <td>44.1</td>
+                <td>232,600</td>
+                <td>60.4</td>
+                <td>279,800</td>
+                <td>72.7</td>
+            </tr>
+            <tr>
+                <th>Newcastle</th>
+                <td>80,600</td>
+                <td>40.5</td>
+                <td>121,800</td>
+                <td>61.3</td>
+                <td>155,700</td>
+                <td>78.3</td>
+            </tr>
+            <tr>
+                <th>Nottingham</th>
+                <td>70,200</td>
+                <td>31.2</td>
+                <td>125,000</td>
+                <td>55.7</td>
+                <td>156,900</td>
+                <td>69.9</td>
+            </tr>
+            <tr>
+                <th>Sheffield</th>
+                <td>166,800</td>
+                <td>44.1</td>
+                <td>249,900</td>
+                <td>66.1</td>
+                <td>298,900</td>
+                <td>79.0</td>
+            </tr>
+        </table>
+        <dl>
+            <dt>NVQ4</dt>
+            <dd>HND,Degree and Higher Degree level qualifications</dd>
+            <dt>NVQ3</dt>
+            <dd>2 or more A levels, or equivalent</dd>
+            <dt>NVQ2</dt>
+            <dd>5 or more GCSEs at grades A-C, or equivalent</dd>
+        </dl>
+        </div>
+        <footer>
+            <hr>
+            <p>Created by La Ode Muhammad Gazali; (<a href="mailto:2222126960@stis.ac.id">2222126960@stis.ac.id</a>)</p>
+        </footer>
+    </body>
+</html>

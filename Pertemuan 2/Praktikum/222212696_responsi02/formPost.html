@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pendataan Mahasiswa Himada IMASSI</title>
+  </head>
+  <body>
+    <form action="#form" method="post">
+      <h3 id="form" style="text-align: center;">Form Pendataan Mahasiswa Himada IMASSI 65</h3>
+
+      <label for="nama">Nama</label><br>
+      <input type="text" name="nama" id="nama" style="width: 250px;padding: 8px;margin-bottom: 12px;border-radius: 4px;" required><br>
+
+      <label for="nim" >NIM</label><br>
+      <input type="text" name="nim" id="nim" style="width: 250px;padding: 8px;margin-bottom: 12px;border-radius: 4px;" required><br>
+
+      <label for="tanggal_lahir">Tanggal lahir</label><br>
+      <input type="date" id="tanggal_lahir" name="tanggal_lahir" style="width: 250px;padding: 8px;margin-bottom: 12px;border-radius: 4px;" required><br>
+
+      <label>Jenis Kelamin</label> <br>
+      <input type="radio" name="jenis_kelamin" id="perempuan" value="perempuan" required>
+      <label for="perempuan">Perempuan</label>
+      <input type="radio" name="jenis_kelamin" id="laki_laki" value="laki_laki" required>
+      <label for="laki_laki">Laki-Laki</label><br>
+
+      <label for="provinsi" style="margin-top: 8px;">Asal Provinsi</label><br>
+      <select name="provinsi" id="provinsi" style="width: 250px;padding: 8px;margin-bottom: 12px;border-radius: 4px;" required>
+        <option value="" >Pilih Provinsi</option>
+        <option value="Sulsel">Sulawesi Selatan</option>
+        <option value="Sulut">Sulawesi Utara</option>
+        <option value="Sultra">Sulawesi Tenggara</option>
+        <option value="Sulbar">Sulawesi Barat</option>
+        <option value="Sulteng">Sulawesi Tengah</option>
+        <option value="Gorontalo">Gorontalo</option>
+      </select><br>
+
+      <label for="alamat">Alamat Kosan (Tempat tinggal)</label><br>
+      <textarea name="alamat" id="alamat" cols="30" rows="5" style="width: 250px;padding: 8px;margin-bottom: 12px;border-radius: 4px;" required></textarea><br>
+
+      <label for="no_telpon">Nomor Telepon</label><br>
+      <input type="tel" name="no_telpon" id="no_telpon" style="width: 250px;padding: 8px;margin-bottom: 12px;border-radius: 4px;" required> <br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

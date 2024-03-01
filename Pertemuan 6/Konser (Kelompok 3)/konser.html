@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Concert Ticket Booking</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Concert Ticket Booking</h1>
+    <div class="form">
+      <!-- Formulir Pemesanan Tiket Konser -->
+      <!-- Label untuk input nama -->
+      <label for="name">Nama:</label> 
+      <input type="text" id="name" placeholder="Nama">
+      <!-- Label untuk input email -->
+      <label for="email">E-mail:</label> 
+      <input type="email" id="email" placeholder="E-mail Anda">
+      <!-- Label untuk input nomor telepon -->
+      <label for="phone">Nomor Telepon:</label> 
+      <input type="text" id="phone" placeholder="Nomor Telepon">
+      <!-- Label untuk pilihan konser -->
+      <label for="selectconcert">Pilih Konser:</label> 
+      <select id="selectconcert">
+          <option value="" disabled selected>Pilih Opsi</option>
+          <option value="Tulus">Konser Tulus</option>
+          <option value="Kobo">Konser Kobo Kanaeru</option>
+          <option value="Taylor">Konser Taylor Swift</option>
+      </select>
+      <!-- Label untuk pilihan jenis tiket -->
+      <label for="jenistiket">Pilih Jenis Tiket:</label> 
+      <select id="jenistiket">
+          <option value="" disabled selected>Pilih Opsi</option>
+          <option value="Festival">Festival - Rp700.000,00</option>
+          <option value="VIP">VIP - Rp1.000.000,00</option>
+          <option value="VVIP">VVIP - Rp1.200.000,00</option>
+      </select>
+      <!-- Label untuk input jumlah tiket -->
+      <label for="quantity">Jumlah:</label> 
+      <input type="number" id="quantity" placeholder="Jumlah Tiket">
+
+      <button onclick="invoice()">Beli Tiket</button> <!-- Tombol untuk membuat invoice -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

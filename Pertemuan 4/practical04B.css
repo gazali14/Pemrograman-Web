@@ -1,0 +1,56 @@
+nav{
+    background-color: rgb(50,50,50);
+    overflow: hidden;
+}
+
+nav ul{
+   list-style-type: none;
+   width: 100%;
+   margin: 0;
+}
+
+nav a{
+    color: white;
+    display: inline-block;
+    height: 30px;
+    text-align: center;
+    padding: 5px 1.5em;
+    text-decoration: none;
+}
+
+nav a:hover{
+    background-color: rgb(210,63,63);
+}
+
+nav li{
+    float: left;
+    margin: 0;
+}
+
+.judul{
+    font-weight: bold;
+}
+.active{
+    background-color: rgb(210,63,63);
+}
+
+.tanggal{
+    font-style: italic;
+}
+
+hr.line-barrier{
+    height: 0px;
+    margin-top: 20px;
+}
+
+footer a{
+    color: white;
+}
+
+footer{
+    background-color: rgb(50,50,50);
+    color: white;
+    text-align: center;
+    padding: 0.1px;
+}
+

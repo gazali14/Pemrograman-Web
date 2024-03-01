@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+  
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+  
+nav ul {
+    list-style-type: none;
+}
+  
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+  
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+  
+nav ul li a:hover {
+    text-decoration: underline;
+}
+  
+main {
+    padding: 20px;
+}
+  
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+  
+.hero h1 {
+    font-size: 36px;
+}
+  
+.features {
+    margin-bottom: 40px;
+    text-align: center;
+}
+  
+.features h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+  
+.feature-item {
+    display: inline-block;
+    width: calc(25% - 40px);
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+.feature-item img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+  
+.feature-item p {
+    font-size: 14px;
+}
+  
+.features ul {
+    list-style-type: none;
+}
+  
+.features ul li {
+    margin-bottom: 10px;
+}
+  
+.gallery {
+    text-align: center;
+}
+  
+.gallery h2 {
+    font-size: 24px;
+}
+  
+.gallery-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+  
+.menu-item {
+    margin: 10px;
+}
+  
+.menu-item img {
+    width: 250px;
+    height: auto;
+}
+  
+.about-us {
+    margin-bottom: 2em;
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+.about-us h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+  
+.about-us p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    text-align: center;
+}
+  
+.contact-us {
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+  
+.contact-us h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+  
+.contact-us p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+  
+.contact-info {
+    display: flex;
+    justify-content: center;
+}
+  
+.contact-item {
+    margin: 0 20px;
+}
+  
+.contact-item p {
+    font-size: 14px;
+}
+  
+footer {
+    color: white;
+    background-color: #333;
+    text-align: center;
+    padding: 10px;
+}
+  
+footer a {
+    color: white;
+} 
