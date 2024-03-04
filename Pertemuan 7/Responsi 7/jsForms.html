@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<!-- Panduan dan Penjelasan tentang program berikut -->
+<!-- Dari program jsRandom.html yang diberikan, saya memodifikasinya menjadi Temperature Conversion Tool
+     yang bernama Vacation Weather Wise. Tool ini akan memudahkan pengguna dalam mengetahui suhu saat ini
+     dalam skala sesuai pemahamannya dan memberikan saran pakaian yang sesuai dengan kondisi suhu udara saat itu. -->
+<!-- Procedure -->
+<!-- Pengguna dapat memasukkan suhu udara dalam skala lokal (tempat liburan saat ini) dan mengkonversinya
+     ke dalam skala yang dipahaminya. Hal ini karena ada beberapa negara yang tidak menggunakan skala Celsius
+     dalam mengetahui suhu udara. Oleh karena itu, pengguna dapat memilih skala awal dan skala target sesuai
+     kebutuhan mereka.
+
+     Setelah mengklik tombol konversi, hasil konversi suhu akan ditampilkan bersama dengan saran pakaian yang sesuai
+     dengan kondisi suhu udara saat itu. Sehingga, pengguna dapat menghindari kondisi "SALAH KOSTUM".
+
+     Selamat liburan! Ingatlah untuk berpakaian sesuai dengan cuaca selama liburan Anda. Selamat menikmati!     
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konversi Suhu</title>
+  <!-- Link ke file CSS untuk gaya formulir -->
+  <link rel="stylesheet" href="jsFormsStyle.css">
+  <!-- Link ke font Montserrat dari Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+  <!-- Skrip JavaScript untuk melakukan konversi suhu -->
+  <script>
+    // Fungsi untuk mengonversi suhu ke satuan yang dituju
+    function convertTemperature(temperature, initialUnit, targetUnit) {
+      // Mengakomodasi suhu negatif
+      if (temperature < 0) {
+          switch (initialUnit) {
+              case 'Celsius':
+                  // Konversi Celsius negatif ke Fahrenheit
+                  if (targetUnit === 'Fahrenheit') {
+                      return (temperature * 9/5) + 32;
+                  } else if (targetUnit === 'Kelvin') {
+                      return temperature + 273.15;
+                  } else if (targetUnit === 'Reamur') {
+                      return temperature * 4/5;
+                  } else {
+                      return NaN; // Return NaN for unsupported units
+                  }
+              case 'Fahrenheit':
+                  // Konversi Fahrenheit negatif ke unit target yang lain
+                  if (targetUnit === 'Celsius') {
+                      return (temperature - 32) * 5/9;
+                  } else if (targetUnit === 'Kelvin') {
+                      return (temperature + 459.67) * 5/9;
+                  } else if (targetUnit === 'Reamur') {
+                      return (temperature - 32) * 4/9;
+                  } else {
+                      return NaN; // Return NaN for unsupported units
+                  }
+              case 'Kelvin':
+                  // Konversi Kelvin negatif ke unit target yang lain
+                  if (targetUnit === 'Celsius') {
+                      return temperature - 273.15;
+                  } else if (targetUnit === 'Fahrenheit') {
+                      return (temperature * 9/5) - 459.67;
+                  } else if (targetUnit === 'Reamur') {
+                      return (temperature - 273.15) * 4/5;
+                  } else {
+                      return NaN; // Return NaN for unsupported units
+                  }
+              case 'Reamur':
+                  // Konversi Reamur negatif ke unit target yang lain
+                  if (targetUnit === 'Celsius') {
+                      return temperature * 5/4;
+                  } else if (targetUnit === 'Fahrenheit') {
+                      return (temperature * 9/4) + 32;
+                  } else if (targetUnit === 'Kelvin') {
+                      return (temperature * 5/4) + 273.15;
+                  } else {
+                      return NaN; // Return NaN for unsupported units
+                  }
+              default:
+                  return NaN; // Return NaN for unsupported units
+          }
+      }
+
+      // Mengakomodasi suhu yang positif
+      let celsius;
+      // Konversi terlebih dahulu ke Celsius sebagai langkah perantara
+      switch (initialUnit) {
+        case 'Celsius':
+          celsius = temperature;
+          break;
+        case 'Fahrenheit':
+          celsius = (temperature - 32) * 5/9;
+          break;
+        case 'Kelvin':
+          celsius = temperature - 273.15;
+          break;
+        case 'Reamur':
+          celsius = temperature * 5/4;
+          break;
+        default:
+          return NaN;
+      }
+
+      // Konversi dari Celsius ke unit target
+      switch (targetUnit) {
+        case 'Celsius':
+          return celsius;
+        case 'Fahrenheit':
+          return (celsius * 9/5) + 32;
+        case 'Kelvin':
+          return celsius + 273.15;
+        case 'Reamur':
+          return celsius * 4/5;
+        default:
+          return NaN;
+      }
+    }
+
+    // Fungsi untuk mengelola input dan menampilkan hasil konversi
+    function processInput(val, initialUnit, targetUnit) {
+      // Mendapatkan elemen yang menampilkan hasil dan input suhu
+      let result = document.getElementById("result");
+      let temperatureInput = document.getElementById("temperature");
+
+      // Memeriksa apakah input suhu tidak kosong
+      if (temperatureInput.value === "") {
+        alert("Please input the temperature first");
+        result.innerHTML = "";
+        return;
+      }
+
+      let error = document.getElementById("error");
+
+      // Memeriksa apakah input suhu adalah angka dan tidak kosong
+      if (val.match(/^-?\d*\.?\d+$/) && val !== "") { // Mengubah pola pencarian untuk mendukung angka negatif
+          // Mengonversi suhu ke satuan target yang dipilih
+          let convertedTemp = convertTemperature(parseFloat(val), initialUnit, targetUnit);
+          if (!isNaN(convertedTemp)) {
+              // Menampilkan hasil konversi dengan simbol derajat
+              result.innerHTML = `${val}° ${initialUnit} = ${convertedTemp.toFixed(2)}° ${targetUnit}`;
+              error.innerHTML = ""; // Mengosongkan pesan kesalahan
+
+              // Menampilkan saran pakaian berdasarkan suhu
+              let clothingSuggestion = suggestClothing(convertedTemp, targetUnit);
+              result.innerHTML += "<br><br>" + clothingSuggestion;
+          } else {
+              error.innerHTML = "Invalid temperature or unit"; // Mengganti pesan kesalahan menjadi lebih umum
+              result.innerHTML = ""; // Mengosongkan hasil konversi
+          }
+      } else {
+          error.innerHTML = "Please enter a valid temperature"; // Pesan kesalahan yang lebih tepat untuk input suhu
+          result.innerHTML = ""; // Mengosongkan hasil konversi
+      }
+
+    }
+
+    // Fungsi untuk memberikan saran pakaian berdasarkan suhu
+    function suggestClothing(temperature, unit) {
+      // Menentukan saran pakaian berdasarkan suhu dan satuan
+      if (temperature < 0) {
+        return "It's very cold outside! Make sure to bundle up with warm clothing like a heavy coat, gloves, scarf, and warm boots.";
+      }
+      // Rentang suhu (setiap skala) untuk memberi saran pakaian yang sesuai
+      if (unit === 'Celsius') {
+        if (temperature < 10) {
+          return "Brrr! It's freezing outside. Make sure to wear a heavy coat, gloves, scarf, and warm boots.";
+        } else if (temperature >= 10 && temperature < 20) {
+          return "It's quite chilly. Consider wearing a thick jacket or coat, along with a sweater and boots.";
+        } else if (temperature >= 20 && temperature < 30) {
+          return "It's cool outside. You might want to wear a light jacket or sweater.";
+        } else if (temperature >= 30 && temperature < 40) {
+          return "It's warm! Wear light and breathable clothing like shorts, a T-shirt, and sandals.";
+        } else {
+          return "It's hot outside! Stay cool with loose-fitting, breathable clothing such as shorts, tank tops, and flip-flops.";
+        }
+      } else if (unit === 'Fahrenheit') {
+        if (temperature < 50) {
+          return "Brrr! It's freezing outside. Make sure to wear a heavy coat, gloves, scarf, and warm boots.";
+        } else if (temperature >= 50 && temperature < 68) {
+          return "It's quite chilly. Consider wearing a thick jacket or coat, along with a sweater and boots.";
+        } else if (temperature >= 68 && temperature < 86) {
+          return "It's cool outside. You might want to wear a light jacket or sweater.";
+        } else if (temperature >= 86 && temperature < 104) {
+          return "It's warm! Wear light and breathable clothing like shorts, a T-shirt, and sandals.";
+        } else {
+          return "It's hot outside! Stay cool with loose-fitting, breathable clothing such as shorts, tank tops, and flip-flops.";
+        }
+      } else if (unit === 'Kelvin') {
+        if (temperature < 283.15) {
+          return "Brrr! It's freezing outside. Make sure to wear a heavy coat, gloves, scarf, and warm boots.";
+        } else if (temperature >= 283.15 && temperature < 293.15) {
+          return "It's quite chilly. Consider wearing a thick jacket or coat, along with a sweater and boots.";
+        } else if (temperature >= 293.15 && temperature < 303.15) {
+          return "It's cool outside. You might want to wear a light jacket or sweater.";
+        } else if (temperature >= 303.15 && temperature < 313.15) {
+          return "It's warm! Wear light and breathable clothing like shorts, a T-shirt, and sandals.";
+        } else {
+          return "It's hot outside! Stay cool with loose-fitting, breathable clothing such as shorts, tank tops, and flip-flops.";
+        }
+      } else if (unit === 'Reamur') {
+        if (temperature < 25) {
+          return "Brrr! It's freezing outside. Make sure to wear a heavy coat, gloves, scarf, and warm boots.";
+        } else if (temperature >= 25 && temperature < 30) {
+          return "It's quite chilly. Consider wearing a thick jacket or coat, along with a sweater and boots.";
+        } else if (temperature >= 30 && temperature < 35) {
+          return "It's cool outside. You might want to wear a light jacket or sweater.";
+        } else if (temperature >= 35 && temperature < 40) {
+          return "It's warm! Wear light and breathable clothing like shorts, a T-shirt, and sandals.";
+        } else {
+          return "It's hot outside! Stay cool with loose-fitting, breathable clothing such as shorts, tank tops, and flip-flops.";
+        }
+      } else {
+        return "Invalid unit";
+      }
+    }
+
+  </script>
+</head>
+<body>
+    <div id="title">
+        <!-- Judul halaman -->
+        <h1>Vacation Weather Wise: Temperature Conversion Tool</h1>
+        <!-- Deskripsi halaman -->
+        <h3>Explore the wonders of temperature conversion to plan your vacation adventures better. Know the climate wherever you go and dress appropriately for the ultimate holiday experience!</h3>
+    </div>
+    <div class="card">
+        <!-- Judul formulir -->
+        <h1>Konversi Suhu</h1>
+        <!-- Formulir untuk input suhu -->
+        <form name="form1" action="">
+        <label for="temperature">Temperature:</label>
+        <input type="number" name="temperature" id="temperature" size="10" required/><br />
+        <!-- Pilihan satuan suhu awal dan akhir -->
+        <div class="unit-container">
+            <div class="unit-group">
+            <!-- Memilih satuan awal -->
+            <label for="initialUnit">Satuan Awal:</label>
+            <select name="initialUnit" id="initialUnit">
+                <option value="Celsius">Celsius</option>
+                <option value="Fahrenheit">Fahrenheit</option>
+                <option value="Kelvin">Kelvin</option>
+                <option value="Reamur">Reamur</option>
+            </select>
+            </div>
+            <div class="unit-group">
+            <!-- Memilih satuan target -->
+            <label for="targetUnit">Satuan Target:</label>
+            <select name="targetUnit" id="targetUnit">
+                <option value="Celsius">Celsius</option>
+                <option value="Fahrenheit">Fahrenheit</option>
+                <option value="Kelvin">Kelvin</option>
+                <option value="Reamur">Reamur</option>
+            </select>
+            </div>
+        </div>
+        <!-- Tombol untuk melakukan konversi -->
+        <input type="button" name="Convert" onclick="processInput(document.getElementById('temperature').value, document.getElementById('initialUnit').value, document.getElementById('targetUnit').value);" value="Konversi"/>
+        </form>
+        <!-- Penanda kesalahan input -->
+        <div id="error"></div>
+
+        <!-- Menampilkan hasil konversi -->
+        <h4 id="konversi">Hasil Konversi :</h4>
+        <div id="result"></div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <p> &copy; La Ode Muhammad Gazali (2KS2/222212696)</p>
+    </footer>
+</body>
+</html>

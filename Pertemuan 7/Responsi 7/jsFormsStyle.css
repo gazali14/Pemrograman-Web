@@ -1,0 +1,114 @@
+/* Body */
+body {
+    /* Menetapkan gambar latar belakang dan mengatur posisinya */
+    background: url(img/bg.png) center center no-repeat;
+    background-size: cover; /* Mengatur gambar agar mengisi seluruh area background */
+    height: 100vh; /* Menetapkan tinggi body agar mengisi seluruh tinggi layar */
+    margin: 0; /* Menghapus margin bawaan */
+    display: flex; /* Menggunakan display flex untuk mengatur penempatan elemen */
+    justify-content: center; /* Memusatkan secara horizontal */
+    align-items: center; /* Memusatkan secara vertikal */
+  }
+
+/* Judul */
+#title {
+    position: absolute; /* Menetapkan posisi absolut untuk mudahnya pemosisian */
+    top: 20px; /* Jarak dari bagian atas */
+    left: 50%; /* Posisi horizontal tengah */
+    transform: translateX(-50%); /* Memusatkan horisontal menggunakan translate */
+    text-align: center; /* Pusatkan teks secara horizontal */
+    z-index: 1; /* Mengatur tumpukan lapisan */
+    max-width: 90%; /* Mengatur lebar maksimum judul */
+}
+
+#title h1 {
+    font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
+    margin: 0; /* Menghapus margin bawaan */
+    color: #fff; /* Warna teks putih */
+    font-size: 22px; /* Ukuran font */
+}
+
+#title h3 {
+    font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
+    margin: 10px 0 0; /* Margin atas */
+    font-size: 11px; /* Ukuran font */
+    color: #ffffffdd; /* Warna teks putih dengan transparansi */
+}
+
+/* Card */
+.card {
+    padding: 20px; /* Memberikan padding pada konten dalam kartu */
+    border-radius: 8px; /* Memberikan sudut lengkung pada border */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan tipis */
+    background: #ffffff30; /* Mengatur background kartu menjadi transparan */
+    outline: none; /* Menghapus outline */
+    border: 2px solid #cccccc71; /* Mengatur border putih */
+    backdrop-filter: blur(20px); /* Efek blur pada latar belakang container */
+    width: 100%; /* Lebar kartu */
+    max-width: 400px; /* Lebar maksimum kartu */
+}
+
+/* Container Satuan */
+.unit-container {
+    display: flex; /* Menyusun unit secara horizontal */
+    margin-bottom: 15px; /* Margin bawah */
+}
+
+.unit-group {
+    flex: 1; /* Menyesuaikan ukuran unit */
+    margin-right: 20px; /* Margin kanan */
+}
+
+.unit-group:last-child {
+    margin-right: 0; /* Hapus margin kanan pada elemen terakhir */
+}
+
+.unit-group label {
+    display: block; /* Tampilkan label sebagai blok */
+    margin-bottom: 5px; /* Margin bawah */
+    color: black; /* Warna teks hitam */
+}
+
+/* Input dan Tombol */
+input[type="number"],
+select,
+input[type="button"] {
+    width: 100%; /* Lebar elemen */
+    padding: 8px; /* Padding */
+    margin-bottom: 10px; /* Margin bawah */
+    border: 1px solid #ccc; /* Border abu-abu */
+    border-radius: 4px; /* Sudut lengkung */
+    box-sizing: border-box; /* Box model */
+    background: transparent; /* Mengatur background menjadi transparan */
+    border: 1px solid #fff; /* Mengatur border putih */
+    color: black; /* Warna teks hitam */
+}
+
+input[type="button"] {
+    background-color: rgb(18, 166, 235); /* Warna latar belakang tombol */
+    color: #fff; /* Warna teks putih */
+}
+
+input[type="button"]:hover {
+    background-color: #060a76; /* Warna latar belakang tombol saat hover */
+    color: white; /* Warna teks putih saat hover */
+}
+
+/* Judul Tengah */
+h1 {
+    text-align: center; /* Pusatkan teks secara horizontal */
+    color: rgb(237, 80, 32); /* Warna teks */
+}
+
+h4 {
+   color: #2d50d0; 
+}
+
+/* Footer */
+footer {
+    position: fixed; /* Tetapkan posisi footer */
+    bottom: 0; /* Posisikan footer di bagian bawah */
+    width: 100%; /* Footer mengisi seluruh lebar layar */
+    text-align: center; /* Pusatkan teks secara horizontal */
+    color: #fff; /* Warna teks putih */
+}

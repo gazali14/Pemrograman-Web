@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Panduan dan Penjelasan tetang program berikut -->
+<!-- Dari program jsRandom.html yang diberikan, saya memodifikasinya menjadi Game bernama COUNT MASTER.
+Game ini menguji kemampuan user dalam melakukan operasi penjumlahan dari angka-angaka random yang digenerate
+pada tabel.-->
+<!-- Prosedur -->
+<!-- Adapun user akan harus terlebih dahulu memilih level kesulitan yang akan dimainkan. Level terdiri atas 3, yaiut
+    1. Mudah, berarti angka random yang digenerate memiliki interval antara 1 sampai 10 
+    2. Sedang, berarti angka random yang digenerate memiliki interval antara 1 sampai 15
+    1. Sulit, berarti angka random yang digenerate memiliki interval antara 1 sampai 25
+
+    Nantinya user akan dibatasi waktu untuk menjawab yaitu selama 30 detik terhitung dari saat
+    user memilih level kesulitan dan angka digenerate otomatis.
+
+    Jika user ingin mengetahui apakah jawabannya benar, dapat mengklik tombol Check, nantinya akan muncul
+    alert pemberitahuan apakah jawaban user benar atau salah. Jika salah, akan diberitau apa jawaban yang benar.
+    Jika user mengklik tombol Check tapi belum menginputkan jawaban, maka akan muncul alert yang meperingatkan
+    user untuk mengisi jawabannya terlebih dahulu
+
+    Jika telah selesai dan masih ingin bermain lagi, user dapat mengklik tombol reset atau langsung memilih level
+    kesulitan yang diinginkan.
+
+    Sekian, It's game time! Let's play and have a great time!"
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Random Game</title>
+    <style>
+        /* Style untuk Body */
+        body {
+            font-family: Arial, sans-serif; /* Mengatur jenis font untuk seluruh body */
+            background-color: #f5f5f5; /* Mengatur warna latar belakang */
+            margin: 0; /* Menghilangkan margin default */
+            display: flex; /* Mengatur tata letak menjadi flexbox */
+            justify-content: center; /* Pusatkan konten horizontal */
+            align-items: center; /* Pusatkan konten vertikal */
+            height: 100vh; /* Set tinggi sesuai 100% viewport height */
+            background-image: url(img/bg2.png); /* Gunakan gambar latar belakang */
+            background-size: cover; /* Penyesuaian gambar agar menutupi area latar belakang */
+            background-position: center; /* Posisikan gambar latar belakang di tengah */
+        }
+
+        /* Style untuk Kartu */
+        .card {
+            background-color: rgba(255, 255, 255, 0.9); /* Atur warna latar belakang dengan transparansi */
+            border-radius: 10px; /* Atur radius sudut untuk sudut membulat */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan lembut */
+            padding: 10px; /* Berikan ruang padding di dalam kotak */
+            text-align: center; /* Pusatkan teks secara horizontal */
+            background: #fff; /* Atur warna latar belakang */
+            outline: none; /* Hilangkan garis pinggir pada fokus */
+            border: 2px solid #000000; /* Atur border dengan ketebalan dan warna */
+            max-width: 400px; /* Batasi lebar maksimum kartu */
+            margin: auto; /* Posisikan secara horizontal di tengah */
+        }
+
+        /* Style untuk Judul */
+        .card h1 {
+            margin-bottom: 10px; /* Atur margin bawah untuk judul */
+            color: #ffA400; /* Atur warna teks judul */
+        }
+
+        /* Style untuk Tabel */
+        .card table {
+            border-collapse: collapse; /* Gabungkan garis tepi sel */
+            width: 100%; /* Isi lebar 100% dari kontainer */
+            max-width: 300px; /* Batasi lebar maksimum tabel */
+            margin-bottom: 20px; /* Atur margin bawah */
+            margin: 0 auto; /* Pusatkan tabel secara horizontal */
+        }
+
+        /* Style untuk Sel Tabel */
+        .card table tr th {
+            border: 2px solid #3695f4; /* Atur border dengan ketebalan dan warna */
+            font-size: 24px; /* Atur ukuran font */
+            cursor: pointer; /* Ubah kursor saat diarahkan ke sel */
+            transition: background-color 0.3s ease; /* Animasi perubahan warna latar belakang */
+            padding: 10px; /* Berikan ruang padding di dalam sel */
+        }
+
+        /* Style untuk Sel Tabel saat Di-hover */
+        .card table tr th:hover {
+            background-color: rgba(123, 226, 255, 0.1); /* Atur warna latar belakang saat dihover */
+        }
+
+        /* Style untuk Input Tebakan */
+        .guess-input {
+            width: 100%; /* Isi lebar 100% dari kontainer */
+            max-width: 200px; /* Batasi lebar maksimum input */
+            padding: 10px; /* Berikan ruang padding di dalam input */
+            border: 2px solid #3695f4; /* Atur border dengan ketebalan dan warna */
+            border-radius: 5px; /* Atur radius sudut untuk sudut membulat */
+            margin-bottom: 0px; /* Atur margin bawah */
+        }
+
+        /* Style untuk Tombol */
+        .card button {
+            cursor: pointer; /* Ubah kursor saat diarahkan ke tombol */
+            background-color: #369bf4; /* Atur warna latar belakang tombol */
+            border: none; /* Hilangkan border */
+            color: #fff; /* Atur warna teks tombol */
+            padding: 8px 20px; /* Atur ruang padding di dalam tombol */
+            border-radius: 5px; /* Atur radius sudut untuk sudut membulat */
+            font-weight: 600; /* Atur ketebalan font */
+            transition: background-color 0.3s ease; /* Animasi perubahan warna latar belakang */
+            margin-right: 10px; /* Atur margin kanan */
+        }
+
+        /* Style untuk Tombol saat Di-hover */
+        .card button:hover {
+            background-color: #000a67; /* Atur warna latar belakang saat dihover */
+        }
+
+        /* Style untuk Tombol dan Level Container */
+        #tombol,
+        #level {
+            display: flex; /* Mengatur tata letak menjadi flexbox */
+            justify-content: center; /* Pusatkan konten horizontal */
+            margin-top: 5px; /* Atur margin atas */
+        }
+
+        /* Style untuk Tombol Level */
+        #level button {
+            margin: 0 5px; /* Atur margin kiri dan kanan */
+        }
+
+        /* Style untuk Hitung Mundur */
+        #countdown {
+            font-size: 20px; /* Atur ukuran font */
+            color: #000000; /* Atur warna teks */
+            margin-top: 5px; /* Atur margin atas */
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Bagian konten Card -->
+    <div class="card">
+        <!-- Bagian Judul Game -->
+        <h1>GAME COUNT MASTER</h1>
+        <p>Jumlahkan seluruh angka dalam tabel dibawah ini</p>
+        
+        <!-- Tabel untuk Genearate Angka Random -->
+        <table>
+            <tr>
+                <!-- Membuat Kolom Tabel dengan ID dan Fungsi onclick -->
+                <th id="a" onclick="randomize(this)">0</th>
+                <th id="b" onclick="randomize(this)">0</th>
+                <th id="c" onclick="randomize(this)">0</th>
+            </tr>
+            <tr>
+                <th id="d" onclick="randomize(this)">0</th>
+                <th id="e" onclick="randomize(this)">0</th>
+                <th id="f" onclick="randomize(this)">0</th>
+            </tr>
+            <tr>
+                <th id="g" onclick="randomize(this)">0</th>
+                <th id="h" onclick="randomize(this)">0</th>
+                <th id="i" onclick="randomize(this)">0</th>
+            </tr>
+        </table>
+    
+        <!-- Level Kesulitan -->
+        <div>
+            <h4>Pilih Level Kesulitan</h4>
+            <p>Bersiaplah karena angka pada tabel akan langsung dimunculkan. Waktumu menjawab adalah 30 detik !!!</p>
+        </div>
+    
+        <!-- Tombol untuk Pilih Level Kesulitan -->
+        <div id="level">
+            <button onclick="changeDifficulty('easy')">Mudah</button>
+            <button onclick="changeDifficulty('medium')">Sedang</button>
+            <button onclick="changeDifficulty('hard')">Sulit</button>
+        </div>
+    
+        <!-- Input untuk Masukkan Jawaban -->
+        <div>
+            <h4>Masukan Jawabanmu</h4>
+            <input type="number" class="guess-input" id="user-guess" placeholder="Your Guess">
+            <div id="countdown">Sisa Waktu: 30 detik</div>
+        </div>
+    
+        <!-- Tombol untuk Memeriksa Jawaban dan Reset -->
+        <div id="tombol">
+            <button onclick="checkAndCountdown()">Check</button>
+            <button onclick="window.location.reload()">Reset</button>
+        </div>
+    </div>
+    
+    <script>
+        var timer; // Variabel global untuk menyimpan referensi timer hitung mundur
+
+        // Fungsi untuk menghasilkan angka acak pada setiap sel tabel
+        function randomize(number) {
+            var hasil = Math.floor((Math.random() * 9) + 1); // Menghasilkan angka acak antara 1 dan 9
+            number.innerHTML = hasil; // Menetapkan hasil angka acak ke dalam elemen HTML
+            number.style.backgroundColor = "lightblue"; // Menambahkan efek visual saat menghasilkan angka acak
+        }
+
+        // Fungsi untuk menghitung jumlah semua angka dalam tabel
+        function sum() {
+            var numbers = document.querySelectorAll(".card table th"); // Mengambil semua elemen <th> dalam tabel
+            var sum = 0; // Inisialisasi variabel penampung jumlah
+            for (var i = 0; i < numbers.length; i++) {
+                sum += parseInt(numbers[i].innerHTML); // Menambahkan nilai angka pada setiap elemen <th> ke dalam jumlah
+            }
+            alert("Jumlah seluruh bilangan dalam kotak adalah " + sum); // Menampilkan hasil jumlah ke dalam sebuah alert
+        }
+
+        // Fungsi untuk memeriksa jawaban yang dimasukkan pengguna
+        function checkAnswer() {
+            var numbers = document.querySelectorAll(".card table th"); // Mengambil semua elemen <th> dalam tabel
+            var correctSum = 0; // Inisialisasi variabel untuk menyimpan jumlah yang benar
+            for (var i = 0; i < numbers.length; i++) {
+                correctSum += parseInt(numbers[i].innerHTML); // Menambahkan nilai angka pada setiap elemen <th> ke dalam jumlah yang benar
+            }
+            var userGuess = parseInt(document.getElementById('user-guess').value); // Mengambil nilai yang dimasukkan pengguna
+            var message;
+            if (userGuess === correctSum) {
+                message = "Jawaban Anda benar!"; // Pesan yang akan ditampilkan jika jawaban benar
+            } else {
+                message = "Jawaban Anda salah. Yang benar adalah " + correctSum; // Pesan yang akan ditampilkan jika jawaban salah
+            }
+            alert(message); // Menampilkan pesan hasil pengecekan jawaban
+        }
+
+        // Fungsi untuk mengatur dan menampilkan hitung mundur
+        function countdownTimer() {
+            var seconds = 30; // Menetapkan jumlah detik untuk hitung mundur
+            timer = setInterval(function () {
+                document.getElementById("countdown").innerHTML = "Sisa Waktu: " + seconds + " detik"; // Menampilkan sisa waktu pada elemen HTML
+                seconds--; // Mengurangi jumlah detik
+                if (seconds < 0) {
+                    clearInterval(timer); // Menghentikan hitung mundur jika waktu habis
+                    alert("Waktumu Habis"); // Menampilkan pesan jika waktu habis
+                }
+            }, 1000); // Menjalankan hitung mundur setiap 1 detik (1000 milidetik)
+        }
+
+        // Fungsi untuk memeriksa jawaban pengguna dan memulai hitung mundur
+        function checkAndCountdown() {
+            var userGuess = document.getElementById('user-guess').value.trim(); // Mengambil nilai yang dimasukkan pengguna dan menghapus spasi
+            if (userGuess === "") {
+                alert("Masukkan jawaban Anda terlebih dahulu!"); // Menampilkan pesan jika input jawaban kosong
+                return; // Menghentikan eksekusi fungsi jika input jawaban kosong
+            }
+            checkAnswer(); // Memeriksa jawaban pengguna
+            clearInterval(timer); // Menghentikan hitung mundur setelah pengguna menjawab
+        }
+
+        // Fungsi untuk mengubah tingkat kesulitan permainan dan menghasilkan angka baru
+        function changeDifficulty(difficulty) {
+            var min, max;
+            if (difficulty === "easy") {
+                min = 1;
+                max = 10; // Menetapkan rentang angka untuk tingkat kesulitan mudah (1 - 10)
+            } else if (difficulty === "medium") {
+                min = 1;
+                max = 15; // Menetapkan rentang angka untuk tingkat kesulitan sedang (1 - 15)
+            } else if (difficulty === "hard") {
+                min = 1;
+                max = 25; // Menetapkan rentang angka untuk tingkat kesulitan sulit (1 - 25)
+            }
+
+            var numbers = document.querySelectorAll(".card table th"); // Mengambil semua elemen <th> dalam tabel
+            numbers.forEach(function (number) {
+                var hasil = Math.floor(Math.random() * (max - min + 1)) + min; // Menghasilkan angka acak dalam rentang yang ditentukan
+                number.innerHTML = hasil; // Menetapkan hasil angka acak ke dalam elemen HTML
+            });
+
+            countdownTimer(); // Memulai hitung mundur saat tombol level diklik
+        }
+
+    </script>
+</body>
+
+</html>
