@@ -1,0 +1,102 @@
+/* Style untuk seluruh body */
+body {
+  font-family: "Arial", sans-serif;
+  background: url("img/pict2.jpg") center;
+  background-size: cover;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #fff;
+}
+
+/* Style untuk container */
+.container {
+  width: 400px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: transparent;
+  backdrop-filter: blur(30px);
+  border: 2px solid #fff;
+}
+
+/* Style untuk judul h1 */
+.container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* Style untuk form */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style untuk input dan select */
+/* Style untuk input dan select */
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background: transparent;
+  color: #fff;
+}
+
+option {
+  color: black;
+}
+
+/* Style untuk placeholder */
+::placeholder {
+  color: #fff; /* Mengatur warna placeholder */
+}
+
+/* Style untuk label */
+label {
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: bold;
+  display: inline-block; /* Menyelaraskan label dan input secara horizontal */
+  width: 100%; /* Menetapkan lebar label agar sesuai dengan lebar input */
+}
+
+/* Style untuk tombol */
+button {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%; /* Menetapkan lebar tombol agar sesuai dengan lebar container */
+}
+
+/* Style untuk tombol saat dihover */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Style untuk tombol "Tampil Data" */
+.show-data-button {
+  padding: 12px 20px;
+  background-color: #189100;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%; /* Menetapkan lebar tombol agar sesuai dengan lebar container */
+}
+
+/* Style untuk tombol "Tampil Data" saat dihover */
+.show-data-button:hover {
+  background-color: #218838; /* Warna latar belakang hijau yang sedikit lebih gelap saat dihover */
+}
