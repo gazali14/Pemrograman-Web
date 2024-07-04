@@ -1,0 +1,126 @@
+<html lang="en-GB">
+<head>
+    <title>JavaScript 09B: Objects</title>
+    <!--(1) Membuat constructor untuk object Employee beserta fungsi untuk
+    menghitung jumlah Employee  -->
+    <script>
+        /*
+        function Employee(name, salary) {
+            // Atribut publik
+            this.name = name;
+            // Atribut privat
+            let _salary = salary;
+            // Method untuk mendapatkan nilai salary
+            this.getSalary = function () {
+                return _salary;
+            };
+            // Method untuk mengubah nilai salary
+            this.setSalary = function (newSalary) {
+                _salary = newSalary;
+            };
+            // Atribut privat untuk menghitung jumlah employee
+            let employeeCount = 0;
+            // Method untuk mendapatkan jumlah employee
+            this.getEmployeeCount = function () {
+                return employeeCount;
+            };
+            // Setiap kali objek Employee dibuat, tambahkan ke jumlah employee
+            employeeCount++;
+        }
+
+        */
+        
+    </script>
+    <!--(2) Modifikasi script diatas agar dapat diakses dengan menyebut objek employee,
+    Misal Employee.employeeCount()  -->
+    <script>
+        function Employee(name, salary) {
+            // Atribut publik
+            this.name = name;
+            // Atribut privat
+            let _salary = salary;
+            // Method untuk mendapatkan nilai salary
+            this.getSalary = function () {
+                return _salary;
+            };
+            // Method untuk mengubah nilai salary
+            this.setSalary = function (newSalary) {
+                _salary = newSalary;
+            };
+            Employee.employeeCount++;
+        }
+        // Method to get the salary of employee
+        Employee.prototype.getSalary = function() {
+            return this.salary;
+        }
+
+        // Method to set the salary of employee
+        Employee.prototype.setSalary = function(salary) {
+            this.salary = salary;
+        }
+
+        // Private static variable to store the count of employees
+        Employee.employeeCount = 0;
+
+        // Static method to get the count of employees
+        Employee.getEmployeeCount = function() {
+            return Employee.employeeCount;
+        }
+
+        // Method to get the name of employee
+        Employee.prototype.getName = function() {
+            return this.name;
+        }
+
+        /*(3) Membuat fungsi untuk menghapus objek Employee sekaligus
+        mengurangi jumlah employee yang ada. Implementasinya silahkan lihat komentar (4) dibawah*/
+        Employee.prototype.remove = function() {
+            // Reduce the employee count
+            Employee.employeeCount--;
+    
+        };
+
+    </script>
+</head>
+<body>
+    <script>
+        var e = [];
+        e[0] = new Employee("Hal Smith", 30000);
+        e[1] = new Employee("Tim Peck", 20000);
+        e[2] = new Employee("Ari Bell", 18000);
+        // For e[0].name we expect 'Hal Smith'
+        document.writeln("e[0].name = "+e[0].name+"<br>");
+        // For e[0].salary we expect 'undefined'
+        document.writeln("e[0].salary = "+e[0].salary+"<br>");
+        // For e[0].getSalary() we expect 30000
+        document.writeln("e[0]'s salary = "+e[0].getSalary()+"<br>");
+        // For e[1].getName() we expect 'Tim Peck'
+        document.writeln("e[1]'s name = "+e[1].getName()+"<br>");
+        // For e[1].getSalary() we expect 20000
+        document.writeln("e[1]'s salary = "+e[1].getSalary()+"<br>");
+        // For e[2].getName() we expect 'Ari Bell'
+        document.writeln("e[2]'s name = "+e[2].getName()+"<br>");
+        // For e[2].getSalary() we expect 18000
+        document.writeln("e[2]'s salary = "+e[2].getSalary()+"<br>");
+        // We make changes to e[1]
+        
+        // We make changes to e[1]
+        
+        document.writeln("Changing e[1]'s name to 'Tom Beck' and " + "salary to 25000<br>");
+        e[1].name = "Tom Beck";
+        e[1].setSalary(25000);
+        // For e[1].getName() we now expect 'Tom Beck'
+        document.writeln("e[1]'s name = "+e[1].getName()+"<br>");
+        // For e[1].getSalary() we now expect 25000
+        document.writeln("e[1]'s salary = "+e[1].getSalary()+"<br>");
+        // For e[1].getEmployeeCount() we expect 3
+        document.writeln("Numbers of Employees: " + Employee.getEmployeeCount() + "<br>");
+
+        //*(4) Misal ingin menghapus employee e[2], maka tinggal memanggil fungsi remove() pada objek tersebut*/
+
+        // For e[1].getEmployeeCount() we expect 2
+        e[2].remove();
+        document.writeln("Number of Employees after remove e[2]: " + Employee.getEmployeeCount() + "<br>");
+    </script>
+</body>
+</html>

@@ -1,0 +1,477 @@
+/* ======= Base Styles ====== */
+:root {
+    --blue: #2b2b50;
+    --white: #ffffff;
+    --black1: #333333;
+    --black2: #666666;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.navigation {
+    position: fixed;
+    display: block;
+    width: 300px;
+    height: 100%;
+    background: var(--blue);
+    transition: 0.5s;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1000;
+    padding-top: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+
+.navigation.collapsed {
+    width: 40px;
+}
+
+.navigation .navbar {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.navbar .navbar-logo span {
+    color: #ffcc00;
+    text-shadow: 1px 1px 0px white, -1px -1px 0px white, -1px 1px 0px white,
+        1px -1px 0px white, 1px 0px 0px white, 0px 1px 0px white, -1px 0px 0px white,
+        0px -1px 0px white;
+}
+
+.navbar-logo {
+    padding-left: 40px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-style: italic;
+    text-shadow: 1px 1px 0px white, -1px -1px 0px white, -1px 1px 0px white,
+        1px -1px 0px white, 1px 0px 0px white, 0px 1px 0px white, -1px 0px 0px white,
+        0px -1px 0px white;
+    margin-left: 20px;
+}
+
+.side {
+    margin-right: 10px;
+    width: 50%;
+}
+
+.side.hidden {
+    display: none;
+}
+
+.container.collapsed-grid {
+    display: block;
+}
+
+.navigation.collapsed ul li a .title {
+    display: none;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation ul li {
+    margin-bottom: 15px;
+}
+
+.navigation ul li a {
+    display: flex;
+    color: var(--white);
+    text-decoration: none;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.navigation ul li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.navigation ul li a .icon {
+    margin-right: 10px;
+}
+
+.navigation ul li a .title {
+    font-size: 16px;
+}
+
+.main {
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+
+.main.collapsed {
+    margin-left: 80px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.search input {
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 200px;
+}
+
+.search .suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    /* Default hidden */
+}
+
+.search .suggestions li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search .suggestions li:hover {
+    background-color: #f5f5f5;
+}
+
+.user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ======= Cards Styles ====== */
+.cardBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card .numbers {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--blue);
+}
+
+.card .iconBx {
+    background: var(--blue);
+    color: var(--white);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* ======= Details Styles ====== */
+.details {
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    background: var(--white);
+    margin-top: 20px;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardHeader h2 {
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.cardHeader .btn {
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: auto;
+    background: var(--white);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 30px;
+}
+
+.details h2 {
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.details table tr th {
+    text-align: center;
+}
+
+.details table tbody td {
+    padding: 10px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.details table tbody td img {
+    max-width: 100px;
+    height: auto;
+}
+
+.details .btn {
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.details .btn:hover {
+    background: #007bff;
+}
+
+.details table thead {
+    font-weight: 600;
+    background: var(--blue);
+    color: var(--white);
+    padding: 12px;
+    padding-top: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details table tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+.details table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.details table tbody tr:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.details table tbody tr td {
+    padding: 10px;
+}
+
+.details table tbody tr td:last-child {
+    text-align: end;
+}
+
+.details table tbody tr td:nth-child(2),
+.details table tbody tr td:nth-child(3) {
+    text-align: justify;
+}
+
+.details form {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 10px;
+}
+
+.details form label {
+    font-weight: 600;
+}
+
+.details form input,
+.details form button,
+.details form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.details form .checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.details form .checkbox input {
+    margin-right: 10px;
+}
+
+.details form .btnform {
+    background-color: var(--blue);
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.details form .btnform:hover {
+    background-color: #1e88e5;
+}
+
+.status {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status.delivered {
+    background: #8de02c;
+    color: var(--white);
+}
+
+.status.pending {
+    background: #e9b10a;
+    color: var(--white);
+}
+
+.status.return {
+    background: #f00;
+    color: var(--white);
+}
+
+.status.inProgress {
+    background: #1795ce;
+    color: var(--white);
+}
+
+/* ======= Responsive Design ====== */
+@media (max-width: 991px) {
+    .main {
+        width: 100%;
+        left: 0;
+    }
+
+    .main.active {
+        left: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .details {
+        grid-template-columns: 1fr;
+    }
+
+    .recentOrders {
+        overflow-x: auto;
+    }
+
+    .status.inProgress {
+        white-space: nowrap;
+    }
+
+    .container.collapsed-grid {
+        display: block;
+        grid-template-columns: unset;
+        gap: unset;
+        padding: unset;
+    }
+
+    .navigation {
+        width: 45px;
+    }
+
+    .side {
+        display: none;
+    }
+
+    .container {
+        display: block;
+        grid-template-columns: unset;
+        gap: unset;
+        padding: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .toggle {
+        display: block;
+        color: #fff;
+        font-size: 24px;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        z-index: 1001;
+    }
+
+    .main.active .toggle {
+        color: #fff;
+        position: fixed;
+        right: 0;
+        left: initial;
+    }
+
+    .cardBox {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .cardHeader h2 {
+        font-size: 20px;
+    }
+
+    .user {
+        min-width: 40px;
+    }
+}

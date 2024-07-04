@@ -1,0 +1,53 @@
+<!DOCTYPE HTML> <html lang="en-GB">
+<head>
+    <title>JavaScript and Forms</title>
+    <script>
+        function FahrenheitToCelsius(temperature) {
+            //
+            // Tugas anda di sini
+            /*(2) Melakukan return dari perhitungan rumus untuk mengkonversi suhu
+            dari fahrenheit ke celsius*/
+            return (temperature-32)*5/9;
+            //
+        } 
+        //(5) membuat function processInput untuk memvalidasi inputan hanya berupa angka
+        function processInput(temperature) {
+            var validNumber = new RegExp(/^\d*\.?\d*$/);
+            if (validNumber.test(temperature)) {
+                document.getElementById("error").innerHTML = "";
+                return document.form1.celsius.value = FahrenheitToCelsius(parseFloat(temperature)).toFixed(1);
+            } else {
+                document.getElementById("error").innerHTML = 'Inputan Harus Berupa Angka (Tidak Bisa Huruf)';
+                document.getElementById("df").focus();
+            }
+        }
+    </script>
+</head>
+<body>
+    <!--(1) Saat dijalankan, program koonversi suhu dari fahrenheit ke celsius tersebut
+    belum dapat digunakan karena functionnya belum dapat mengakomodasi proses konversi
+    sehingga perlu di modifikasi, seperti diatas -->
+    <h1>JavaScript and Forms</h1>
+    <form name="form1" action="">
+        Temperature in Fahrenheit:
+        <!--(3) jika input typenya adalah text maka user masih bisa melakukan inputan berupa huruf
+        yang tentunya akan menghasilkan error sehingga agar membatasi pengguna untuk dapat melakukan 
+        inputan berupa angka saja, maka perlu mengubah input type menjadi number -->
+        
+        <input type="text" name="fahrenheit" id="df" size="10" value="0"/><br /> 
+        <!-- <input type="number" name="fahrenheit" id="df" size="10" value="0"/><br /> -->
+        Temperature in Celsius:
+        <input type="text" name="celsius" onfocus="blur();" /><br />
+        <!-- <input type="number" name="celsius" onfocus="blur();" /><br /> -->
+
+        <!-- (4) Solusi lain adalah dengan membuat fungsi processInput untuk memverifikasi inputan pengguna.
+        Namun, button berikut juga perlu diubah saat onclick -->
+
+        <!-- <input type="button" value="Convert" name="Convert" onclick="document.form1.celsius.value =FahrenheitToCelsius(parseFloat( document.form1.fahrenheit.value)).toFixed(1);" /> -->
+        <input type="button" name="btnConvert" value="Convert" onclick="return processInput(document.form1.fahrenheit.value)" />
+    </form>
+    <div id="error">
+
+    </div>
+</body>
+</html>

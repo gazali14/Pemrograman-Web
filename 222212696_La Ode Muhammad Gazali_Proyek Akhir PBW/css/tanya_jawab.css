@@ -1,0 +1,212 @@
+.ask-section {
+  padding-top: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  margin: 0 auto;
+  width: 85%;
+  padding-bottom: 5rem;
+}
+
+.ask-container {
+  max-width: 85%;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+.ask-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ask-card,
+.answer-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 1rem;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.ask-card {
+  border: 2px solid #145da0;
+  border-left: 8px solid #145da0;
+}
+
+.answer-card {
+  margin-left: 5rem;
+  border: 2px solid #ffcc00;
+  border-left: 8px solid #ffcc00;
+}
+
+.ask-info,
+.answer-info {
+  flex-grow: 1;
+}
+
+.ask-name,
+.answer-name {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+  color: #000; /* Warna teks hitam */
+}
+
+.ask-description,
+.answer-description {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #000; /* Warna teks hitam */
+}
+
+.ask-usage,
+.answer-usage {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #145da0; /* Warna teks merah */
+}
+
+.not-answered {
+  color: #000;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 0.4px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 1rem;
+  border: 1px solid red;
+  margin-left: 5rem;
+  text-align: center;
+}
+
+.create-question-btn {
+  display: inline-block;
+  background-color: #145da0;
+  border: none;
+  padding: 0.8rem 1rem; /* Sesuaikan padding sesuai kebutuhan */
+  border-radius: 10px;
+  display: inline-block; /* Jadikan tautan sebagai blok yang dapat disesuaikan ukurannya */
+  text-decoration: none; /* Hapus garis bawah default */
+  margin-left: 5%; /* Gunakan persentase untuk responsivitas */
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .create-question-btn {
+    margin-left: 85%; /* Gunakan margin yang lebih besar pada layar yang lebih besar */
+  }
+}
+
+.create-question-btn:hover {
+  background-color: #1164e0;
+}
+
+/* CSS untuk tombol delete */
+.delete-question-btn {
+  background-color: #cc0000; /* Warna merah */
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  margin-top: 1rem;
+  right: 10px;
+  width:30px;
+}
+
+.delete-question-btn:hover {
+  background-color: #890000; /* Warna merah yang lebih gelap saat hover */
+}
+
+
+/* Buat pertanyaan */
+.container {
+  max-width: 85%;
+  margin: 0 auto;
+  padding-top: 5rem;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header h1 {
+  margin: 0;
+}
+.question {
+  margin: 0 auto;
+  margin-top: 4rem;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-width: 85%;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+form textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+form button {
+  width: 100px;
+  padding: 10px;
+  border: none;
+  background-color: #145da0;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+form button:hover {
+  background-color: #1164e0;
+}
+/* Modal Styles */
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+.popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+.popup i {
+  color: #5cb85c;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.popup p {
+  margin: 10px 0;
+}
+.popup button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #5cb85c;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.popup button:hover {
+  background-color: #1164e0;
+}

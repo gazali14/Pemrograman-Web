@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <title>JavaScript 08A: Functions</title>
+    <script id="s1">
+        function loop(max) {
+            function applyAndWrite(f, y) {
+                document.writeln(f.name, '(', y, ') = ', f(y),"<br>")
+            }
+            function times2(x) { return 2 * x }
+            // Code for Exercise 1e here
+            function scope(x) { return i * x; }
+            /*(2)  fungsi scope tersebut merujuk pada varibel yang ada
+            dalam function loop. Hal ini berarti i tersebut merujuk pada
+            looping for di bawah. */    
+            //(3) kemudian pada modul diminta membuat fungsi power2 yang mengembalikan nilai x kuadrat
+            function power2(x) { return x**2}
+            /* Hasilnya menunjukan bahwa function power2 tersebut mengkuadratkan
+            nilai i yang dikimkan sebagai parameter pada function ApplyAndWrite
+            dari looping for dibawah ini */
+
+            for (var i = 0; i <= max; i++) {
+                applyAndWrite(times2, i)
+                applyAndWrite(scope, i)
+                applyAndWrite(power2,i)  //Memanggil fungsi untuk menampilkan nilai power2
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <script id="s2">
+        loop(2)
+        // Code for Exercise 1d here
+        //times2(6)
+        /* (1) Saat times2 dipanggil disini, maka akan muncul error pada console,
+        yaitu times2 is not defined. Hal ini terjadi karena fungsi times2 memiliki
+        cakupan (scope) hanya didalam function loop. Sehingga tidak dapat dipanggil
+        diluar function loop */
+    </script>
+    <noscript>JavaScript not supported orenabled</noscript>
+</body>
+</html>

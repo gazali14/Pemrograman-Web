@@ -1,0 +1,270 @@
+/* appointment.css */
+
+.container {
+    padding-top: 5rem;
+}
+
+.judul {
+    max-width: 85%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.appointment-info {
+    margin: 0 auto;
+    border-radius: 10px;
+    max-width: 40rem;
+    text-align: left; /* Ensure text inside .appointment-info is left-aligned */
+    padding: 3rem;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    margin-bottom: 5rem;
+}
+
+.appointment-info h1 {
+    font-size: 24px;
+    color: #000;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.appointment-section p {
+    font-size: 16px;
+    color: #666;
+    text-align: left; /* Ensure paragraphs are left-aligned */
+}
+
+.appointment-info label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.appointment-info input[type="text"],
+.appointment-info textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left; /* Ensure input and textarea text is left-aligned */
+}
+.appointment-info input[type="text"]:disabled{
+    background-color: #f0f0f0; /* Set the background color for disabled input */
+    color: #666; 
+}
+.appointment-info button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #145da0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.appointment-info button:hover {
+    background-color: #103c65;
+}
+
+.popup-container {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(
+      -50%,
+      -50%
+    ); /* Untuk memindahkan titik tengah elemen ke tengah layar */
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    color:#000;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.popup i {
+    font-size: 64px;
+    color: #5cb85c;
+    margin-bottom: 20px;
+}
+
+.popup button {
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* View appointment atyle */
+.appointment-details-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    color:#000;
+    position: relative;
+}
+
+.appointment-details-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.appointment-details-container p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.appointment-details-container a {
+    display: inline-block;        
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.appointment-details-container a:hover {
+    background-color: #0056b3;
+}
+
+ 
+/* CSS untuk tombol "Tidak" */
+#confirm-no-btn {
+    background-color: #ff0000; /* Merah */
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+#confirm-no-btn:hover {
+    background-color: #cc0000; /* Merah yang lebih gelap saat hover */
+}
+
+/* CSS untuk tombol "Ya" */
+#confirm-yes-btn {
+    background-color: #4caf50; /* Hijau */
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+#confirm-yes-btn:hover {
+    background-color: #388e3c; /* Hijau yang lebih gelap saat hover */
+}
+.appointment-info strong {
+    display: inline-block;
+    width: 120px; /* Sesuaikan dengan lebar label terpanjang */
+}
+
+pre{
+    font-size: 16px;
+}
+#cancel-appointment-btn {
+    background-color: #cc0000; /* Warna merah */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top:0;
+    right: 0;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    
+}
+
+#cancel-appointment-btn:hover {
+    background-color: #890000; /* Warna merah yang lebih gelap saat hover */
+ }
+
+ /* view Appointment */
+ .details {
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    background: var(--white);
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    color: black;
+}
+
+.details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: auto;
+    background: var(--white);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    margin:0 auto;
+    text-align: left;
+}
+
+.details h2 {
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.details table tr th{
+    text-align: left;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #3463a7;
+    color: #fff;
+}
+
+.details table tbody td {
+    padding: 10px;
+    font-size: 14px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.details table thead{
+    font-weight: 600;
+    background: var(--blue);
+    color: var(--white);
+    padding: 12px;
+    padding-top: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details table tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+.details table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.details table tbody tr td {
+    padding: 10px;
+}
